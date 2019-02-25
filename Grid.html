@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grid Line05</title>
+    <style>
+        canvas { background: rgb(94, 94, 94);
+                width: 100%; height: 100%;}
+        body {margin: 0;}
+    </style>
+
+</head>
+<body>
+    <canvas></canvas>
+<script>
+    // Lightgreen by every 500px line
+    // white line by 100px line
+    // glay by 50px.
+    
+    var canvas = document.querySelector('canvas');
+    var endX = canvas.width = window.innerWidth;
+    var endY = canvas.height = window.innerHeight;
+    var c = canvas.getContext('2d');
+    var midX = endX/2;
+    var midY = endY/2;
+
+    function gridLine() {
+        c.lineWidth = 1;
+        function strokeGrid() {
+            c.beginPath();
+            c.moveTo(i*50, 0);
+            c.lineTo(i*50, endY);
+            c.moveTo(0, i*50);
+            c.lineTo(endX, i*50);
+            c.stroke();
+        }
+        // endX, endY 大きい方÷10だけ線を引く
+        for (i = 0; i < (Math.max(endX,endY)); i ++) {
+            // 10で割り切れるときに実行, 500pxごと
+            if (i % 10 == 0){
+                c.strokeStyle = '#90ee90';
+                strokeGrid();
+            } // 奇数の時に. 50pxごと
+            else if (i % 2 == 1){
+                c.strokeStyle = '#999';
+                strokeGrid();
+            } // 偶数の時に. 100pxごと
+            else if (i % 2 == 0) {
+                c.strokeStyle = '#fff';
+                strokeGrid();
+            }
+        }
+    } gridLine();
+
+</script>
+</body>
+</html>
