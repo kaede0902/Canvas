@@ -24,7 +24,7 @@
             <option value="both">both</option>
             </select>
             <br>
-        </form>
+    </form>
 
 
 <script> 
@@ -82,11 +82,30 @@
         var y = h/2;
         console.log(x,y);
         
+        c.fillStyle = c.strokeStyle = '#f00';
+        switch(charStyle) {
+            case 'fill':
+                c.fillText(msg,x,y);
+                break;
+            case 'stroke':
+                c.strokeText(msg,x,y);
+                break;
+            case 'both':
+                c.strokeText(msg,x,y);
+                c.fillText(msg,x,y);
+                break;
+        }
     }
     function  textChanged(e) {
+        var target = e.target;
+        console.log(target);
+        msg = target.value;
         drawScreen();
     }
     function charChanged(e) {
+        var target = e.target;
+        charStyle = target.value;
+        console.log('target',target);
         drawScreen();
     }
 
@@ -94,5 +113,9 @@
 //}
 
 </script>
+
+
+
+
 </body>
 </html>
