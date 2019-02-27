@@ -6,12 +6,16 @@
     <style>
         * {
             margin-left: 200px;
-            background: #aaa;
+            background: #000;
             color: #fff;
         }
         .one {
             width: 500px;
             height: 300px;
+        }
+        form{
+            font-size:32px;
+            border:20px;
         }
     </style>
 </head>
@@ -41,7 +45,6 @@
 // }
 // function canvasApp() {
     
-
     var msg = 'your text';
     var charStyle = 'fill';
 
@@ -52,7 +55,7 @@
     = document.getElementById('textBox');
 
     formElement.addEventListener
-    ('keyup', textChanged, false);
+        ('keyup', textChanged, false);
 
     formElement 
     = document.getElementById('charStyle');
@@ -88,7 +91,7 @@
         console.log(x,y);
         
         c.fillStyle = c.strokeStyle = '#f00';
-        switch(charStyle) {
+        switch(charStyle) { // ---------------------
             case 'fill':
                 c.fillText(msg,x,y);
                 break;
