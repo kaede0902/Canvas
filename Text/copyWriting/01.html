@@ -75,7 +75,7 @@
 
         c.fillStyle = '#ffa';
         c.fillRect(0,0,w,h);
-        console.log(w,h);
+        console.log('width,height',w,h);
 
         c.strokeStyle = '#000';
         c.strokeRect
@@ -87,8 +87,9 @@
         console.log(metrics);
         
         var x = w/2 - metrics.width /2;
+            //take the position to center.
         var y = h/2;
-        console.log(x,y);
+        console.log('x,y:',x,y);
         
         c.fillStyle = c.strokeStyle = '#f00';
         switch(charStyle) { // ---------------------
