@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>simplest Anime</title>
+    <style>
+        * {
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas></canvas>
+    <script>
+const cvs = document.querySelector('canvas');
+const c = cvs.getContext('2d');
+const endX = cvs.width = window.innerWidth;
+const endY = cvs.height= window.innerHeight;
+const midX = cvs.width /2;
+const midY = cvs.height /2;
+
+
+function createCircle(){
+  return {
+    x: 0,
+    y: 0,
+  }
+}
+
+//var circles = new Array(10).map(() => return {createCircle()});
+
+function drawArc(x, y, r, color) {
+    c.beginPath();
+    c.arc(x, y, r, 0, 2*Math.PI, false);
+    c.fillStyle = color;
+    c.fill();
+}
+
+const plc = {arc: midX, rect: 500,};
+
+function render() {
+    c.clearRect(0,0,endX,endY);
+    c.beginPath();
+    drawArc(plc.arc,0,20,'#fff');
+    c.closePath();
+    requestAnimationFrame(render); // 1000/30fps 
+    plc.arc+=10;
+    
+} render();
+    </script>
+</body>
+</html>
