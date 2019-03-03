@@ -52,49 +52,6 @@
         </select>
         <br>
 
-        Size: <input type = 'range' id = 'size'
-                min = '0'
-                max = '200'
-                step = '1'
-                value = '50'
-              /> <br>
-            
-        Color: <input class = 'color' 
-                    value = 'F00'/> <br>
-            
-        Weight: <select id = 'weight'>
-            <option value = 'normal'> normal </option>
-            <option value = 'bold'> normal </option>
-            <option value = 'bolder'> normal </option>
-            <option value = 'lighter'> normal </option>
-        </select>
-        <br>     
-
-        Style: <select id = 'style'>
-            <option value = 'normal'>normal </option> 
-            <option value = 'italic'>italic </option> 
-            <option value = 'oblique'>oblique </option>
-        </select> <br>
-
-        BaseLine: <select id = 'baseLine'>
-            <option value = 'middle'> middle </option>
-            <option value = 'top'> middle </option>
-            <option value = 'bottom'> middle </option>
-            
-            <option value = 'alphabetic'> middle </option>
-            <option value = 'hanging'> middle </option>
-            <option value = 'ideographic'> middle </option> 
-        </select> <br>
-
-        Align: <select id = 'align'>
-            <option value = 'left'> middle </option> 
-            <option value = 'right'> middle </option> 
-            <option value = 'center'> middle </option> 
-            
-            <option value = 'start'> middle </option> 
-            <option value = 'end'> middle </option> 
-        </select> <br>
-
 
     </form>
 
@@ -109,14 +66,7 @@
 // function canvasApp() {
     
     var msg = 'your text';
-    var writeStyle = 'fill';
-    const size = '50';
     const font = 'serif';
-    const color = '#f00';
-    const baseLine = 'middle';
-    const align = 'center';
-    const weight = 'normal';
-    const style =  'normal'; 
 
     const cvs = document.querySelector('canvas')
     const  c = cvs.getContext('2d');
