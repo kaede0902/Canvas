@@ -26,8 +26,8 @@ function createBallData(){
     x: Math.random() *endX,
     y: Math.random() *endY,
     r: Math.random() *100,
-    sx: Math.random() *50,
-    sy: Math.random() *25,
+    sx: Math.random() *100 -50,
+    sy: Math.random() *50 -25,
   }
 }
 
@@ -38,7 +38,6 @@ const balls = [];
 for (i = 1; i <= num; i++) {
     balls[i] = createBallData();
 }
-console.log('balls:',balls);
 
 function drawCircle(x, y, r, color) {
    c.beginPath();                
@@ -58,10 +57,18 @@ function render() {
             balls[i].r,
             '#fff',
         ); 
-        balls[i].x += balls[i].sx;
-        balls[i].y += balls[i].sy;
+        if (balls[i].x < 0 || endX < balls[i].x)
+            balls[i].sx *= -1;
+        
+            balls[i].x += balls[i].sx;
+
+        if (balls[i].y < 0 || endY < balls[i].y)
+            balls[i].sy *= -1;
+        
+            balls[i].y += balls[i].sy;
     }
 
+console.log('balls:',balls[1].x, balls[1].sx);
 
     c.closePath();
     
