@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>balls</title>
+    </head>
+    <body>
+        <script charset="utf-8">
+            function create_ball() {
+                return {
+                    x: Math.random() * 20,
+                    y: Math.random() * 20,
+                    r: Math.random() * 20,
+                    sx: Math.random() * 20,
+                    sy: Math.random() * 20,
+                    num: Math.random() * 100,
+                };
+            }
+            balls = new Array(100);
+            for(var i = 0; i < 100; ++i){
+                balls[i] = create_ball();
+            }
+            console.log(balls);
+        </script>
+    </body>
+</html>

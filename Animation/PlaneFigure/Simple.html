@@ -19,8 +19,10 @@ const endY = cvs.height= window.innerHeight;
 const midX = cvs.width /2;
 const midY = cvs.height /2;
 
+const rand = Math.random()*20;
+console.log(rand);
 
-function createCircle(){
+function dataCircle(){
   return {
     x: 0,
     y: 0,
@@ -36,16 +38,38 @@ function drawArc(x, y, r, color) {
     c.fill();
 }
 
-const plc = {arc: midX, rect: 500,};
+const ball  = {
+    x: Math.random()*20,
+    y: Math.random()*20,
+    r: Math.random()*20,
+    sx: Math.random()*20,
+    sy: Math.random()*20,
+    num: Math.random()*100,
+};
 
 function render() {
     c.clearRect(0,0,endX,endY);
     c.beginPath();
-    drawArc(plc.arc,0,20,'#fff');
+
+    drawArc(
+        Math.random() * midX,
+        Math.random() * midY,
+        Math.random() * 50,
+        '#fff',
+    );
+
     c.closePath();
     requestAnimationFrame(render); // 1000/30fps 
-    plc.arc+=10;
+    //ball.x += ball.sx;
+    //ball.y += ball.sy;
     
+    console.log(
+        'x:', ball.x,
+        'y:', ball.y,
+        'r:', ball.r,
+        'num:', ball.num,
+    );
+
 } render();
     </script>
 </body>

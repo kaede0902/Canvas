@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>simplest Anime</title>
+    <style>
+        * {
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas></canvas>
+    <script>
+const cvs = document.querySelector('canvas');
+const c = cvs.getContext('2d');
+const endX = cvs.width = window.innerWidth;
+const endY = cvs.height= window.innerHeight;
+const midX = cvs.width /2;
+const midY = cvs.height /2;
+
+const num = Math.random()*100;
+
+function createBallData(){
+  return {
+    x: Math.random() *endX,
+    y: Math.random() *endY,
+    r: Math.random() *100,
+    sx: Math.random() *50,
+    sy: Math.random() *25,
+  }
+}
+
+//var circles = new Array(10).map(() => return {createCircle()});
+
+const balls = [];
+
+for (i = 1; i <= num; i++) {
+    balls[i] = createBallData();
+}
+console.log('balls:',balls);
+
+function drawCircle(x, y, r, color) {
+   c.beginPath();                
+   c.arc(x, y, r, 0, 2*Math.PI, false)
+   c.fillStyle = color;      
+   c.fill();                         
+}
+function render() {
+    requestAnimationFrame(render);
+    c.clearRect(0,0,endX,endY);
+    c.beginPath();
+
+    for (i = 1; i <= num; i++) {
+        drawCircle(
+            balls[i].x,
+            balls[i].y,
+            balls[i].r,
+            '#fff',
+        ); 
+        balls[i].x += balls[i].sx;
+        balls[i].y += balls[i].sy;
+    }
+
+
+    c.closePath();
+    
+} render()
+    </script>
+</body>
+</html>
