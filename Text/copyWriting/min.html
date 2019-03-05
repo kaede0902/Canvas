@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ch3 02</title>
+    <title>min txtArng</title>
     <style>
         * {
             margin-left: 200px;
             background: #000;
             color: #fff;
+        }
+        body {
+            margin-top: 270px;
         }
         .one {
             width: 500px;
@@ -33,7 +36,7 @@
 <canvas id="one"></canvas>
 
     <form>
-        Text: <input id="text" placeholder="your text">
+        Text: <input id="msg" placeholder="your text">
             <br>
         Write Style:
             <select id="writeStyle">
@@ -44,11 +47,11 @@
             <br>
 
         Font: <select id = 'font'>
-        <option value = 'serif'>serif </option>
-        <option value = 'san-selif'>san-serif </option>
-        <option value = 'cursive'>cursive </option>
-        <option value = 'fantasy'>fantasy </option>
-        <option value = 'monospace'>monospace </option>
+            <option value = 'serif'>serif </option>
+            <option value = 'san-selif'>san-serif </option>
+            <option value = 'cursive'>cursive </option>
+            <option value = 'fantasy'>fantasy </option>
+            <option value = 'monospace'>monospace </option>
         </select>
         <br>
 
@@ -57,19 +60,14 @@
 
 
 <script> 
-    // c.fillRect(0,0,500,500); // TEST
-// addEventListener('load',loaded,false);
-
-// function loaded() {
-//     canvasApp();
-// }
-// function canvasApp() {
-    
-    var msg = 'your text';
-    const font = 'serif';
 
     const cvs = document.querySelector('canvas')
     const  c = cvs.getContext('2d');
+    cvs.width = window.innerWidth/ 2.5;
+
+    var msg = 'sample';
+    var writeStyle = 'fill';
+    var font = 'serif';
 
 
 // ===== text, char, size, color, font, ===
@@ -77,41 +75,18 @@
 // ===== 
 
     var formElement 
-    = document.getElementById('text');
-        formElement.addEventListener
-            ('keyup', textChanged, false);
+    = document.getElementById('msg');
+    
+    formElement.addEventListener('keyup', msgChng, false);
 
     formElement 
-    = document.getElementById('writeStyle');
-        formElement.addEventListener
-            ('change', charChanged, false);
+    = document.getElementById('writeStyle').addEventListener
+            ('change', writeStyleChng, false);
     
-
-    formElement
-    = document.getElementById('size');
-        formElement.addEventListener
-            ('change', sizeChanged, false);
-
-    formElement
-    = document.getElementById('color');
-        formElement.addEventListener
-            ('change', colorChanged, false);
-
-    formElement
-    = document.getElementById('font');
-        formElement.addEventListener
-            ('change', fontChanged, false);
-
-// 2
-    formElement
-    = document.getElementById('baseLine');
-        formElement.addEventListener
-            ('change', baseLineChanged, false);
-
-    formElement
-    = document.getElementById('');
-        formElement.addEventListener
-            ('change', baseLineChanged, false);
+    formElement 
+    = document.getElementById('font').addEventListener
+            ('change', fontChng, false);
+    
 
     drawScreen();
 
@@ -131,7 +106,7 @@
         c.strokeRect
             (mgn/2,mgn/2,w-mgn,h-mgn);
         
-        c.font = '50px serif';
+        c.font = '50px '+ font;
 
         var metrics = c.measureText(msg);
         console.log(metrics);
@@ -155,15 +130,21 @@
                 break;
         }
     }
-    function  textChanged(e) {
+    function  msgChng(e) {
         var target = e.target;
         console.log(target);
         msg = target.value;
         drawScreen();
     }
-    function charChanged(e) {
+    function writeStyleChng(e) {
         var target = e.target;
-        charStyle = target.value;
+        writeStyle = target.value;
+        console.log('target',target);
+        drawScreen();
+    }
+    function fontChng(e) {
+        var target = e.target;
+        font = target.value;
         console.log('target',target);
         drawScreen();
     }
