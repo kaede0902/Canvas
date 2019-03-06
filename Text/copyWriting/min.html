@@ -3,33 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>min txtArng</title>
-    <style>
-        * {
-            margin-left: 200px;
-            background: #000;
-            color: #fff;
-        }
-        body {
-            margin-top: 270px;
-        }
-        .one {
-            width: 500px;
-            height: 300px;
-        }
-        form{
-            font-size:32px;
-            border:20px '#fff';
-            padding: 5px;
-        }
-        select {
-            border:20px '#fff';
-            font-size: 32px;
-        }
-        input {
-            border:20px '#fff';
-            font-size: 32px;
-        }
-    </style>
+    <link rel = 'stylesheet' href = 'style.css'> 
 </head>
 <body>
 
@@ -55,7 +29,6 @@
         </select>
         <br>
 
-
     </form>
 
 
@@ -70,9 +43,7 @@
     var font = 'serif';
 
 
-// ===== text, char, size, color, font, ===
-// ===== baseLine, align, weight, style, ==
-// ===== 
+//  msg, writeStyle, font
 
     var formElement 
     = document.getElementById('msg');
@@ -109,7 +80,6 @@
         c.font = '50px '+ font;
 
         var metrics = c.measureText(msg);
-        console.log(metrics);
         
         var x = w/2 - metrics.width /2;
             //take the position to center.
@@ -132,8 +102,8 @@
     }
     function  msgChng(e) {
         var target = e.target;
-        console.log(target);
         msg = target.value;
+        console.log('target',target);
         drawScreen();
     }
     function writeStyleChng(e) {
@@ -148,9 +118,6 @@
         console.log('target',target);
         drawScreen();
     }
-
-
-//}
 
 </script>
 

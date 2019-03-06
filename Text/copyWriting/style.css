@@ -1,0 +1,26 @@
+* {
+    margin-left: 200px;
+    background: #000;
+    color: #fff;
+}
+body {
+    margin-top: 270px;
+}
+.one {
+    width: 500px;
+    height: 300px;
+}
+form{
+    font-size:32px;
+    border:20px '#fff';
+    padding: 5px;
+}
+select {
+    border:20px '#fff';
+    font-size: 32px;
+}
+input {
+    border:20px '#fff';
+    font-size: 32px;
+}
+

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ch3 02</title>
+    <style>
+        * {
+            margin-left: 200px;
+            background: #000;
+            color: #fff;
+        }
+        .one {
+            width: 500px;
+            height: 300px;
+        }
+        form{
+            font-size:32px;
+            border:20px '#fff';
+            padding: 5px;
+        }
+        select {
+            border:20px '#fff';
+            font-size: 32px;
+        }
+        input {
+            border:20px '#fff';
+            font-size: 32px;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="one"></canvas>
+
+    <form>
+        Text: <input id="text" placeholder="your text">
+            <br>
+        Write Style:
+            <select id="writeStyle">
+            <option value="fill">fill</option>
+            <option value="stroke">stroke</option>
+            <option value="both">both</option>
+            </select>
+            <br>
+
+        Font: <select id = 'font'>
+        <option value = 'serif'>serif </option>
+        <option value = 'san-selif'>san-serif </option>
+        <option value = 'cursive'>cursive </option>
+        <option value = 'fantasy'>fantasy </option>
+        <option value = 'monospace'>monospace </option>
+        </select>
+        <br>
+
+        Size: <input type = 'range' id = 'size'
+                min = '0'
+                max = '200'
+                step = '1'
+                value = '50'
+              /> <br>
+            
+        Color: <input class = 'color' 
+                    value = 'F00'/> <br>
+            
+        Weight: <select id = 'weight'>
+            <option value = 'normal'> normal </option>
+            <option value = 'bold'> normal </option>
+            <option value = 'bolder'> normal </option>
+            <option value = 'lighter'> normal </option>
+        </select>
+        <br>     
+
+        Style: <select id = 'style'>
+            <option value = 'normal'>normal </option> 
+            <option value = 'italic'>italic </option> 
+            <option value = 'oblique'>oblique </option>
+        </select> <br>
+
+        BaseLine: <select id = 'baseLine'>
+            <option value = 'middle'> middle </option>
+            <option value = 'top'> middle </option>
+            <option value = 'bottom'> middle </option>
+            
+            <option value = 'alphabetic'> middle </option>
+            <option value = 'hanging'> middle </option>
+            <option value = 'ideographic'> middle </option> 
+        </select> <br>
+
+        Align: <select id = 'align'>
+            <option value = 'left'> middle </option> 
+            <option value = 'right'> middle </option> 
+            <option value = 'center'> middle </option> 
+            
+            <option value = 'start'> middle </option> 
+            <option value = 'end'> middle </option> 
+        </select> <br>
+
+
+    </form>
+
+
+<script> 
+    // c.fillRect(0,0,500,500); // TEST
+// addEventListener('load',loaded,false);
+
+// function loaded() {
+//     canvasApp();
+// }
+// function canvasApp() {
+    
+    var msg = 'your text';
+    var writeStyle = 'fill';
+    const size = '50';
+    const font = 'serif';
+    const color = '#f00';
+    const baseLine = 'middle';
+    const align = 'center';
+    const weight = 'normal';
+    const style =  'normal'; 
+
+    const cvs = document.querySelector('canvas')
+    const  c = cvs.getContext('2d');
+
+
+// ===== text, char, size, color, font, ===
+// ===== baseLine, align, weight, style, ==
+// ===== 
+
+    var formElement 
+    = document.getElementById('text');
+        formElement.addEventListener
+            ('keyup', textChanged, false);
+
+    formElement 
+    = document.getElementById('writeStyle');
+        formElement.addEventListener
+            ('change', charChanged, false);
+    
+
+    formElement
+    = document.getElementById('size');
+        formElement.addEventListener
+            ('change', sizeChanged, false);
+
+    formElement
+    = document.getElementById('color');
+        formElement.addEventListener
+            ('change', colorChanged, false);
+
+    formElement
+    = document.getElementById('font');
+        formElement.addEventListener
+            ('change', fontChanged, false);
+
+// 2
+    formElement
+    = document.getElementById('baseLine');
+        formElement.addEventListener
+            ('change', baseLineChanged, false);
+
+    formElement
+    = document.getElementById('');
+        formElement.addEventListener
+            ('change', baseLineChanged, false);
+
+    drawScreen();
+
+
+
+
+    function drawScreen() {
+        let w = cvs.width;
+        let h = cvs.height;
+        let mgn = 10;
+
+        c.fillStyle = '#ffa';
+        c.fillRect(0,0,w,h);
+        console.log('width,height',w,h);
+
+        c.strokeStyle = '#000';
+        c.strokeRect
+            (mgn/2,mgn/2,w-mgn,h-mgn);
+        
+        c.font = '50px serif';
+
+        var metrics = c.measureText(msg);
+        console.log(metrics);
+        
+        var x = w/2 - metrics.width /2;
+            //take the position to center.
+        var y = h/2;
+        console.log('x,y:',x,y);
+        
+        c.fillStyle = c.strokeStyle = '#f00';
+        switch(writeStyle) { // ---------------------
+            case 'fill':
+                c.fillText(msg,x,y);
+                break;
+            case 'stroke':
+                c.strokeText(msg,x,y);
+                break;
+            case 'both':
+                c.strokeText(msg,x,y);
+                c.fillText(msg,x,y);
+                break;
+        }
+    }
+    function  textChanged(e) {
+        var target = e.target;
+        console.log(target);
+        msg = target.value;
+        drawScreen();
+    }
+    function charChanged(e) {
+        var target = e.target;
+        charStyle = target.value;
+        console.log('target',target);
+        drawScreen();
+    }
+
+
+//}
+
+</script>
+
+
+
+
+</body>
+</html>
