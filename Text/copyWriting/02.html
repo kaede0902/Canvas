@@ -29,6 +29,59 @@
         </select>
         <br>
 
+        Size:
+            <input type = 'range'
+                id = 'size'
+                min = '0'
+                max = '200'
+                step = '1'
+                value = '50'
+            /> <br>
+
+        Color:
+            <input class = 'color'
+                   id = 'color' 
+                   value = 'F00'
+            /> <br>
+
+        Weight:
+            <select id = 'weight'>
+                <option value = 'normal'> normal </option>
+                <option value = 'lighter'> lighter </option>
+                <option value = 'bold'> bold </option>
+                <option value = 'bolder'> bolder </option>
+            </select> <br>
+
+        Style:
+            <select id = 'style'>
+                <option value = 'normal'> normal </option>
+                <option value = 'italic'> italic </option>
+                <option value = 'oblique'> oblique </option>
+            </select> <br>
+
+        BaseLine:
+            <select id = 'baseLine'>
+                <option value = 'middle'> middle </option>
+                <option value = 'top'> top </option>
+                <option value = 'bottom'> bottom </option>
+
+                <option value = 'hanging'> hanging </option>
+                <option value = 'alphabetic'> alphabetic </option>
+                <option value = 'ideographic'> ideographic </option>
+            </select> <br>
+
+        Align:
+            <select id = 'align'>
+                <option value = 'center'> center </option>
+                <option value = 'left'> left </option>
+                <option value = 'right'> right </option>
+                
+                <option value = 'start'> start </option>
+                <option value = 'end'> end </option>
+            </select> <br>
+
+
+
     </form>
 
 
@@ -41,9 +94,15 @@
     var msg = 'sample';
     var writeStyle = 'fill';
     var font = 'serif';
+    let color = '#f00';
+    let baseLine = 'middle';
+    let align = 'center';
+    let weight = 'normal';
+    let style = 'normal';
 
 
 //  msg, writeStyle, font
+//  color, baseLine, align,  weight, style, 
 
     var formElement 
     = document.getElementById('msg');
@@ -58,6 +117,19 @@
     = document.getElementById('font').addEventListener
             ('change', fontChng, false);
     
+    
+    formElement = 
+        document.getElementById('baseLine').addEventListener
+            ('change', baseLine, false);
+    
+    formElement = 
+        document.getElementById('baseLine').addEventListener
+            ('change', baseLine, false);
+    
+    formElement = 
+        document.getElementById('baseLine').addEventListener
+            ('change', baseLine, false);
+
 
     drawScreen();
 
