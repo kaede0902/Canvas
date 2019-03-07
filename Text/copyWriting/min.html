@@ -10,7 +10,7 @@
 <canvas id="one"></canvas>
 
     <form>
-        Text: <input id="msg" placeholder="your text">
+        Text: <input id="msg" placeholder="your text here!">
             <br>
         Write Style:
             <select id="writeStyle">
@@ -100,21 +100,18 @@
         }
     }
     function  msgChng(e) {
-        var target = e.target;
-        msg = target.value;
-        console.log('target',target);
+        msg = e.target.value;
+        console.log('e.trgt:',e.target);
         drawScreen();
     }
     function writeStyleChng(e) {
-        var target = e.target;
-        writeStyle = target.value;
-        console.log('target',target);
+        writeStyle = e.target.value;
+        console.log('e.trgt:',e.target);
         drawScreen();
     }
     function fontChng(e) {
-        var target = e.target;
-        font = target.value;
-        console.log('target',target);
+        font = e.target.value;
+        console.log('e.trgt:',e.target);
         drawScreen();
     }
 

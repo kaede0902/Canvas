@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>min txtArng</title>
+    <title>txtArng ver2</title>
     <link rel = 'stylesheet' href = 'style.css'> 
 </head>
 <body>
@@ -38,10 +38,10 @@
                 value = '50'
             /> <br>
 
-        Color:
+        Color (HEX):
             <input class = 'color'
                    id = 'color' 
-                   value = 'F00'
+                   value = '#F00'
             /> <br>
 
         Weight:
@@ -93,42 +93,53 @@
 
     var msg = 'sample';
     var writeStyle = 'fill';
-    var font = 'serif';
-    let color = '#f00';
-    let baseLine = 'middle';
-    let align = 'center';
+
+    let font = 'serif';
+    let size = '80';
     let weight = 'normal';
     let style = 'normal';
 
+    let color = '#f00';
+    let baseLine = 'middle';
+    let align = 'center';
 
-//  msg, writeStyle, font
-//  color, baseLine, align,  weight, style, 
+
+//  msg, writeStyle, 
+//  font, size, weight, style,
+//  color, baseLine, align, 
 
     var formElement 
     = document.getElementById('msg');
-    
-    formElement.addEventListener('keyup', msgChng, false);
+        formElement.addEventListener('keyup', msgChng, false);
 
     formElement 
     = document.getElementById('writeStyle').addEventListener
             ('change', writeStyleChng, false);
-    
+
+
     formElement 
     = document.getElementById('font').addEventListener
             ('change', fontChng, false);
-    
-    
+    formElement = 
+        document.getElementById('size').addEventListener
+            ('change', sizeChng, false);
+    formElement = 
+        document.getElementById('weight').addEventListener
+            ('change', weightChng, false);
+    formElement = 
+        document.getElementById('style').addEventListener
+            ('change', styleChng, false);
+
+
+    formElement = 
+        document.getElementById('color').addEventListener
+            ('change', colorChng, false);
     formElement = 
         document.getElementById('baseLine').addEventListener
-            ('change', baseLine, false);
-    
+            ('change', baseLineChng, false);
     formElement = 
-        document.getElementById('baseLine').addEventListener
-            ('change', baseLine, false);
-    
-    formElement = 
-        document.getElementById('baseLine').addEventListener
-            ('change', baseLine, false);
+        document.getElementById('align').addEventListener
+            ('change', alignChng, false);
 
 
     drawScreen();
@@ -143,22 +154,25 @@
 
         c.fillStyle = '#ffa';
         c.fillRect(0,0,w,h);
-        console.log('width,height',w,h);
 
         c.strokeStyle = '#000';
         c.strokeRect
             (mgn/2,mgn/2,w-mgn,h-mgn);
         
-        c.font = '50px '+ font;
+    // ======== fontCh ===========
+        c.font = 
+            weight + ' ' +
+            style + ' ' +
+            size + 'px '+
+            font + ' ' ; 
+    // ======== base lines ===========
+        c.textBaseline = baseLine;
+        c.textAlign = align;
 
-        var metrics = c.measureText(msg);
-        
-        var x = w/2 - metrics.width /2;
-            //take the position to center.
+        var x = w/2; 
         var y = h/2;
-        console.log('x,y:',x,y);
         
-        c.fillStyle = c.strokeStyle = '#f00';
+        c.fillStyle = c.strokeStyle = color;
         switch(writeStyle) { // ---------------------
             case 'fill':
                 c.fillText(msg,x,y);
@@ -173,21 +187,56 @@
         }
     }
     function  msgChng(e) {
-        var target = e.target;
-        msg = target.value;
-        console.log('target',target);
+        msg = e.target.value;
+        console.log('target',e.target);
         drawScreen();
     }
     function writeStyleChng(e) {
-        var target = e.target;
-        writeStyle = target.value;
-        console.log('target',target);
+        writeStyle = e.target.value;
+        console.log('target',e.target);
         drawScreen();
     }
+
+
     function fontChng(e) {
-        var target = e.target;
-        font = target.value;
-        console.log('target',target);
+        font = e.target.value;
+        console.log('target',e.target);
+        console.log('font:',c.font);
+        drawScreen();
+    }
+    function sizeChng(e) {
+        size = e.target.value;
+        console.log('target',e.target);
+        console.log('font:',c.font);
+        drawScreen();
+    }
+    function weightChng(e) {
+        weight = e.target.value;
+        console.log('target',e.target);
+        console.log('font:',c.font);
+        drawScreen();
+    }
+    function styleChng(e) {
+        style = e.target.value;
+        console.log('target',e.target);
+        console.log('font:',c.font);
+        drawScreen();
+    }
+
+
+    function colorChng(e) {
+        color = e.target.value;
+        console.log('target',e.target);
+        drawScreen();
+    }
+    function baseLineChng(e) {
+        baseLine = e.target.value;
+        console.log('target',e.target);
+        drawScreen();
+    }
+    function alignChng(e) {
+        align = e.target.value;
+        console.log('target',e.target);
         drawScreen();
     }
 
