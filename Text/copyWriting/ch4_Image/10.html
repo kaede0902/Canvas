@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tank rolling</title>
+    <style>
+        * {
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+<canvas></canvas>
+<script>
+
+//　いつものCanvasセット
+const cvs = document.querySelector('canvas');
+const c = cvs.getContext('2d');
+const endX = cvs.width = window.innerWidth;
+const endY = cvs.height= window.innerHeight;
+const midX = cvs.width /2;
+const midY = cvs.height /2;
+
+// pxは1タイル32pxでsizeは64pxで描画する。
+const px = 32; const size = 64;
+//=======================================================================
+const tileSheet = new Image();
+tileSheet.src = 'tanks_sheet.png';
+tileSheet.addEventListener('load',loaded, false);
+
+const mapIndexOffset = -1;
+const mapRow = 10;
+const mapCol = 10;
+
+const tileMap = [
+    [31,31,31,31,0,31,31,31,31,31,],
+    [0,0,0,0,0,0,0,0,0,0,],
+    [32,0,26,0,26,0,26,0,0,32,],
+    [32,26,0,0,26,0,0,26,0,32,],
+    [32,0,0,0,26,26,0,26,0,32,],
+    [32,0,0,26,0,0,0,26,0,32,],
+    [0,0,0,0,0,0,0,26,0,32,],
+    [32,0,26,0,26,0,26,0,0,0,],
+    [32,0,0,0,0,0,0,0,0,32,],
+    [31,31,31,31,0,31,31,31,31,31],
+];
+
+function loaded() {
+    render();
+}
+
+
+// Almost everything are not working........
+// --------------render---------------------
+function render() {
+    c.clearRect(0,0,endX,endY);
+    for (let row = 0; row < mapRow; row++ ) {
+        for (let col = 0; col < mapCol; col++) {
+            const tileId = tileMap[row][col]+ mapIndexOffset;
+            const x = (tileId % 8) * 32;
+            const y = Math.floor(tileId / 8) * 32;
+            console.log(tileId);
+
+            c.drawImage(
+                tileSheet, x, y, 
+                px, px, col*px, row*px,
+                px,px);
+        }
+    }
+
+} render();//--------------render-------------------------------
+
+
+// add space key to trigger fire()
+
+setInterval(render,100);
+
+    </script>
+</body>
+</html>

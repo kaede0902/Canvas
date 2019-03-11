@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cvs Img Window</title>
+    <style>
+        * {
+            background: #000;
+        }
+        canvas {
+            width = 500;
+            height = 500;
+        }
+    </style>
+</head>
+<body>
+<canvas></canvas>
+<script>
+
+//　いつものCanvasセット
+const cvs = document.querySelector('canvas');
+const c = cvs.getContext('2d');
+//const endX = cvs.width = window.innerWidth;
+//const endY = cvs.height= window.innerHeight;
+//const midX = cvs.width /2;
+//const midY = cvs.height /2;
+
+// Image =======================
+const photo = new Image();
+photo.src = 'butterfly.jpg';
+photo.addEventListener('load', loaded, false);
+
+const windowWidth = 500;
+const windowHeight = 500;
+
+let windowX = 0;
+let windowY = 0;
+
+function loaded() {
+    render();
+}
+
+
+function render() {
+    c.clearRect(0,0,endX,endY);
+           c.drawImage(
+                photo, windowX, windowY, 
+                windowWidth, windowHeight,
+                0,0,
+                windowWidth, windowHeight,
+            );
+} render();//--------------render-------------------------------
+
+
+
+</script>
+</body>
+</html>
