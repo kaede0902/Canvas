@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ball Throws</title>
+    <style>
+        canvas {
+            background: #ecf0f1;
+            width: 100%; height: 100%;
+        }
+        body {margin: 0;}
+    </style>
+
+</head>
+<body>
+    <canvas></canvas>
+<script>
+    
+    var canvas = document.querySelector('canvas');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    var c = canvas.getContext('2d');
+
+
+    var w = canvas.width;
+    var h = canvas.height;
+    var x = 0;
+
+    function render() {
+        c.beginPath();
+        c.fillStyle = '#666';
+        c.fillRect(0, 0, w, h);
+        c.fillStyle = '#2ecc71';
+        function drawCircle(x, y, r, color) {
+            c.beginPath();
+            c.arc(x, y, r, 0, 2*Math.PI, false);
+            c.fillStyle = color;
+            c.fill();
+        }
+        drawCircle(x,200,30, 'darkblue');
+        if (w < x) {
+            x = 0;
+        } else {
+            x += 10;
+        }
+    window.requestAnimationFrame(render);
+    }
+
+    window.requestAnimationFrame(render);
+
+
+
+
+</script>
+</body>
+</html>
