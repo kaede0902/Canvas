@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cos anime</title>
+    <style>
+        * {
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas></canvas>
+    <script>
+const cvs = document.querySelector('canvas');
+const c = cvs.getContext('2d');
+const endX = cvs.width = window.innerWidth;
+const endY = cvs.height= window.innerHeight;
+const midX = cvs.width /2;
+const midY = cvs.height /2;
+c.lineWidth = 3;
+c.stokeStyle = c.fillStyle = '#fff';
+
+function drawArc(x,y,r,clr){
+        c.beginPath();
+        c.arc(x,y,r,0,2*Math.PI,false);
+        c.fillStyle = clr;
+        c.fill();
+    }
+function drawLine(x,y,x2,y2) {
+    c.strokeStyle = '#fff';
+    c.beginPath();
+    c.moveTo(x,y);
+    c.lineTo(x2,y2);
+    c.stroke();
+    c.closePath();
+}
+let n = 0;
+let r2 = midX* 0.8;
+
+function render() {
+    let angle = Math.PI*2 /360 * n;
+    let rx = midX + Math.cos(angle) * r2;
+    let ry = midY + Math.sin(angle) * r2;
+    c.clearRect(0,0,endX,endY);
+    drawLine(
+        midX,midY,
+        rx,ry
+    );
+    drawArc(
+        rx,ry, 
+        14,'#fff'
+    );
+    n++;
+    
+    console.log('n', n, 'angle', angle,)
+            
+    requestAnimationFrame(render); // 1000/30fps 
+} render();
+    </script>
+</body>
+</html>

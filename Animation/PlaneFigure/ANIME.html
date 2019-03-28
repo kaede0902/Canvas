@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cos anime</title>
+    <style>
+        * {
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas></canvas>
+    <script>
+const cvs = document.querySelector('canvas');
+const c = cvs.getContext('2d');
+const endX = cvs.width = window.innerWidth;
+const endY = cvs.height= window.innerHeight;
+const midX = cvs.width /2;
+const midY = cvs.height /2;
+
+function drawArc(x,y,r,clr){
+        c.beginPath();
+        c.arc(x,y,r,0,2*Math.PI,false);
+        c.fillStyle = clr;
+        c.fill();
+    }
+
+
+function render() {
+
+    c.clearRect(0,0,endX,endY);
+    drawArc(midX,midY,50,'#fff');
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+    requestAnimationFrame(render); // 1000/30fps 
+} render();
+    </script>
+</body>
+</html>
