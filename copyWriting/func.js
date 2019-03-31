@@ -32,10 +32,10 @@ function circularMove(x,y,r, clr,step, rx,ry,rr) {
     drawArc(rx,ry,rr);
 } // copied property, so originals No chanage.
 
-const drawCircular = ball => {
+const drawCircular = (preBall, ball) => {
     let angle = Math.PI*2 /360 * tick;
     //moon.x = earth.x + Math.cos(dir * s) * moon.r;
-    ball.x = ball.center.x + Math.cos(angle* ball.spd) * ball.dist;
-    ball.y = ball.center.y + Math.sin(angle* ball.spd) * ball.dist;
+    ball.x = preBall.x + Math.cos(angle* ball.spd) * ball.dist;
+    ball.y = preBall.y + Math.sin(angle* ball.spd) * ball.dist;
     dot(ball);
 }

@@ -36,10 +36,10 @@ const render = () => {
     ctx.clearRect(0,0,endX,endY);
 
     dot(sun);
-    drawCircular(earth);
-    drawCircular(moon);
+    drawCircular(sun,earth);
+    drawCircular(earth,moon);
 
     requestAnimationFrame(render);
-    console.log(moon.center.x);
+    console.log(moon.x);
 }
 render();
