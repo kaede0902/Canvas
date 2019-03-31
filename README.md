@@ -5,3 +5,8 @@
 [Animation](Anime/)
 
 [copyWriting](copyWriting/)
+
+
+## Links
+
+[Core HTML5 Canvas](https://github.com/corehtml5canvas/code)
