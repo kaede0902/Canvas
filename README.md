@@ -1,9 +1,7 @@
 # Canvas
-##HTML5 Canvas
-[This](https://kaede0902.github.io/Canvas/)
+## HTML5 Canvas
+[Github Pages](https://kaede0902.github.io/Canvas/)
 
-[Animation][anime]
+[Animation](Anime/)
 
-[anime]:Animation/
-
-[copyWriting](https://kaede0902.github.io/Canvas/copyWriting)
+[copyWriting](copyWriting/)
