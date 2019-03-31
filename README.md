@@ -2,7 +2,7 @@
 
 ## Repositories
 
-[Animation](Anime/)
+[Animation](Animation/)
 
 [copyWriting](copyWriting/)
 
