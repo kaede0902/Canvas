@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>300x150 to 600x300</title>
+    <style>
+        body {
+            background: #ddd;
+        }
+        #canvas {
+            margin: 20px;
+            padding: 20px;
+            background: #fff;
+            border: thin inset #aaa;
+            width: 600px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id = 'canvas'> Not indicated cvs len</canvas>
+    <script>
+        var cvs = document.getElementById('canvas'),
+            ctx = cvs.getContext('2d');
+
+        ctx.font = '38px Arial';
+        ctx.fillStyle = 'cornflowerblue';
+        ctx.strokeStyle = 'blue';
+
+        ctx.fillText('Hello Canvas',
+            cvs.width/2 -150, cvs.height/2 + 15);
+        ctx.strokeText('Hello Canvas',
+            cvs.width/2 -150, cvs.height/2 + 15);
+    </script>
+    
+</body>
+</html>

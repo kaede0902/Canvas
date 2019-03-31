@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>clock</title>
+    <style>
+        body {
+            background: #000;
+                                       }
+        #canvas {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            margin:20px;
+            background: #222;
+            border: thin solid #aaa;
+        }
+    </style>
+</head>
+<body>
+    <canvas id = 'canvas'></canvas>
+    <script>
+        // clock Outer and numbers.
+        var cvs = document.getElementById('canvas'),
+            ctx = cvs.getContext('2d');
+        cvs.width = 400; cvs.height = 400;
+        const midX = cvs.width/2;
+        const midY = cvs.height/2;
+        ctx.fillStyle = ctx.strokeStyle = '#FFF';
+
+var font_heght = 18,
+    margin = 35,
+    hand_truncation = cvs.width/25,
+    hour_hand_truncation = cvs.width/10,
+    numeral_spacing = 20,
+    radius = canvas.width/2 - margin,
+    hand_radius = radius + numeral_spacing;
+
+function drawArc(x,y,r,clr) {
+    ctx.beginPath();
+    ctx.fillStyle = '#'+ clr;
+    ctx.arc(x, y, r, 0, Math.PI*2, true);
+    ctx.stroke();
+}
+ctx.font = font_heght + 'px Arial';
+function drawNumerals() {
+    var numerals = [
+        1,2,3,4,5,6,7,8,9,10,11,12,],
+    angle = 0,
+    numeralWidth = 0;
+
+    numerals.forEach(function(numeral) { // to the arr
+        // Devide 12, and back x 3.
+        angle = Math.PI*2 /12 * (numeral - 3);
+        numeralWidth = ctx.measureText(numeral).width;
+        ctx.fillText(
+            numeral, 
+            midX + Math.cos(angle)* (hand_radius) - numeralWidth/2,
+            midY + Math.sin(angle)* (hand_radius) + font_heght/4)
+    //hand_radius = radius + numeral_spacing;
+
+        console.log(
+            'No.', numeral, '\n',
+            'Math.cos(angle):\n', Math.cos(angle),'\n',
+            'angle:', angle,
+        );
+    });
+}
+drawNumerals();
+
+function drawCenter() {
+    ctx.beginPath();
+    drawArc(midX,midY,13,'#fff');
+    ctx.fill();
+}
+drawCenter();
+
+    </script>
+    
+</body>
+</html>
