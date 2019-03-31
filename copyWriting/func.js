@@ -1,25 +1,16 @@
 
-
-let n = 0
-function render() {
-    requestAnimationFrame(render);
-    ctx.clearRect(0,0,endX,endY);
-
-    circularMove(midX,midY,midX/3,'9F9',10,15);
-    drawArc(midX,midY,50,"ddd");
-    drawLine(0,midY,endX,midY,'F99');
-} render();
-
-
-
-
-
 function drawArc(x,y,r,clr) {
-
     ctx.beginPath();
     ctx.fillStyle = '#'+ clr;
     ctx.arc(x,y,r,0,2*Math.PI,false);
     ctx.fill();
+}
+const dot = p => {
+    ctx.beginPath();
+    ctx.fillStyle = '#'+ p.clr;
+    ctx.arc(p.x, p.y, p.r,0,2*Math.PI,false);
+    ctx.fill();
+
 }
 
 function drawLine(x,y,x2,y2,clr) {
@@ -31,17 +22,20 @@ function drawLine(x,y,x2,y2,clr) {
     ctx.closePath();
 }
 
-function circularMove(x,y,r,clr,step,r2) {
+function circularMove(x,y,r, clr,step, rx,ry,rr) {
     ctx.beginPath();// r2 is moving arc's r.
     ctx.strokeStyle = '#'+ clr;
     ctx.fillStyle = '#'+ clr;
-    let angle = Math.PI*2 /n;
-    let rx = x + Math.cos(angle)*r;
-    let ry = y + Math.sin(angle)*r;
-    drawArc(rx,ry,r2);
-//    n += step;
-    n++;
-    console.log(n);
+    let tempAngle = Math.PI*2 /360 *angle;
+    rx = x + Math.cos(tempAngle)*r;
+    ry = y + Math.sin(tempAngle)*r;
+    drawArc(rx,ry,rr);
+} // copied property, so originals No chanage.
+
+const drawCircular = ball => {
+    let angle = Math.PI*2 /360 * tick;
+    //moon.x = earth.x + Math.cos(dir * s) * moon.r;
+    ball.x = ball.center.x + Math.cos(angle* ball.spd) * ball.dist;
+    ball.y = ball.center.y + Math.sin(angle* ball.spd) * ball.dist;
+    dot(ball);
 }
-
-
