@@ -16,6 +16,8 @@ const render = () => {
     satelite(sun,earth);
     satelite(earth,moon);
     satelite(sun,mars);
+    satelite(sun, merculy);
+    satelite(sun, venus);
 
     requestAnimationFrame(render);
 }
