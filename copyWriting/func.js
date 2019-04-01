@@ -22,19 +22,8 @@ function drawLine(x,y,x2,y2,clr) {
     ctx.closePath();
 }
 
-function circularMove(x,y,r, clr,step, rx,ry,rr) {
-    ctx.beginPath();// r2 is moving arc's r.
-    ctx.strokeStyle = '#'+ clr;
-    ctx.fillStyle = '#'+ clr;
-    let tempAngle = Math.PI*2 /360 *angle;
-    rx = x + Math.cos(tempAngle)*r;
-    ry = y + Math.sin(tempAngle)*r;
-    drawArc(rx,ry,rr);
-} // copied property, so originals No chanage.
-
-const drawCircular = (preBall, ball) => {
+const satelite = (preBall, ball) => {
     let angle = Math.PI*2 /360 * tick;
-    //moon.x = earth.x + Math.cos(dir * s) * moon.r;
     ball.x = preBall.x + Math.cos(angle* ball.spd) * ball.dist;
     ball.y = preBall.y + Math.sin(angle* ball.spd) * ball.dist;
     dot(ball);
