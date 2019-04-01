@@ -8,10 +8,10 @@ const render = () => {
     ctx.shadowColor = '#FFF';
     ctx.beginPath();
     ctx.fillStyle = 'yellow';
-    ctx.shadowblur = 30;
+    ctx.shadowBlur = 30;
     ctx.arc(sun.x, sun.y, sun.r, 0,2*Math.PI,false);
     ctx.fill();
-    ctx.shadowblur = 0;
+    ctx.shadowBlur = 0;
     //dot(sun);
     satelite(sun,earth);
     satelite(earth,moon);
