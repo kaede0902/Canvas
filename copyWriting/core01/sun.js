@@ -14,8 +14,8 @@ const render = () => {
     //dot(sun);
     satelite(sun,earth);
     satelite(earth,moon);
+    satelite(sun,mars);
 
     requestAnimationFrame(render);
-    console.log(moon.x);
 }
 render();

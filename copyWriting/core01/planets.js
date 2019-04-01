@@ -17,7 +17,31 @@ let moon = {
     y: null,
     r: 10,
     spd: 2,
-    dist: midX/6,
+    dist: midX/12,
     clr: 'B7840C',
 };
 
+let merculy = {
+    x: null,
+    y: null,
+}
+let venus = {
+    x: null,
+    y: null,
+}
+let mars = {
+    x: null,
+    y: null,
+    r: 20,
+    spd: 0.5,
+    dist: midX/2,
+    clr: 'E0927B', 
+}
+let jupiter = {
+    x: null,
+    y: null,
+}
+let saturn = {
+    x: null,
+    y: null,
+}
