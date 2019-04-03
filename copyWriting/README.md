@@ -1,8 +1,9 @@
 
 
 ## clock
+[clock](
 https://kaede0902.github.io/Canvas/copyWriting/core01/FULLCLOCK
-
+)
 ### forEach
 Do func process to each array[] elems.
 
