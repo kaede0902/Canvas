@@ -1,6 +1,7 @@
 
 
 ## clock
+https://kaede0902.github.io/Canvas/copyWriting/core/FULLCLOCK
 
 ### forEach
 Do func process to each array[] elems.
