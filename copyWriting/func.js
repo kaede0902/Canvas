@@ -1,17 +1,28 @@
 
-function drawArc(x,y,r,clr) {
+function drawArc(
+    x = midX,y = midY,r = midX/2,clr = 'DDD'
+){
+//    x= x|| midX; y= y|| midY; r= r|| midX/2; clr= clr|| 'fff';
     ctx.beginPath();
     ctx.fillStyle = '#'+ clr;
     ctx.arc(x,y,r,0,2*Math.PI,false);
     ctx.fill();
 }
-const dot = p => {
+const dflt = {x:midX,y:midY,r:midX/2,clr:'ddd'}
+const dot = (p = dflt) => {
     ctx.beginPath();
     ctx.fillStyle = '#'+ p.clr;
     ctx.arc(p.x, p.y, p.r,0,2*Math.PI,false);
     ctx.fill();
-
 }
+const circle = (p = dflt) => {
+    ctx.beginPath();
+    ctx.strokeStyle = '#'+ p.clr;
+    ctx.arc(p.x, p.y, p.r,0,2*Math.PI,false);
+    ctx.stroke();
+}
+
+
 
 function drawLine(x,y,x2,y2,clr) {
     ctx.beginPath();

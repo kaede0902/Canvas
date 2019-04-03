@@ -20,13 +20,13 @@
 <body>
     <canvas id = 'canvas'></canvas>
     <script>
-        // clock Outer and numbers.
-        var cvs = document.getElementById('canvas'),
-            ctx = cvs.getContext('2d');
-        cvs.width = 400; cvs.height = 400;
-        const midX = cvs.width/2;
-        const midY = cvs.height/2;
-        ctx.fillStyle = ctx.strokeStyle = '#FFF';
+// clock Outer and numbers.
+var cvs = document.getElementById('canvas'),
+    ctx = cvs.getContext('2d');
+    cvs.width = 400; cvs.height = 400;
+    const midX = cvs.width/2;
+    const midY = cvs.height/2;
+    ctx.fillStyle = ctx.strokeStyle = '#FFF';
 
 var font_heght = 18,
     margin = 35,
@@ -36,8 +36,9 @@ var font_heght = 18,
     radius = canvas.width/2 - margin,
     hand_radius = radius + numeral_spacing;
 
-function drawArc(x,y,r,clr) {
-    ctx.beginPath();
+function drawArc(
+    x = midX,y = midY,r = midX/2,clr = 'FFF') {
+   ctx.beginPath();
     ctx.fillStyle = '#'+ clr;
     ctx.arc(x, y, r, 0, Math.PI*2, true);
     ctx.stroke();
@@ -58,23 +59,55 @@ function drawNumerals() {
             midX + Math.cos(angle)* (hand_radius) - numeralWidth/2,
             midY + Math.sin(angle)* (hand_radius) + font_heght/4)
     //hand_radius = radius + numeral_spacing;
-
-        console.log(
-            'No.', numeral, '\n',
-            'Math.cos(angle):\n', Math.cos(angle),'\n',
-            'angle:', angle,
-        );
-    });
+   });
 }
 drawNumerals();
 
 function drawCenter() {
     ctx.beginPath();
-    drawArc(midX,midY,13,'#fff');
+    drawArc(midX,midY,5,'#fff');
     ctx.fill();
 }
 drawCenter();
 
+const needle = (loc, isHour) => {
+    let angle = Math.PI*2 * loc/60 - Math.PI/2;
+    let handRadius = isHour ? 
+            radius - hand_truncation - hour_hand_truncation:
+            radius - hand_truncation;
+
+    ctx.moveTo(midX,midY);
+    ctx.lineTo(
+        midX + Math.cos(angle) * handRadius,
+        midY + Math.sin(angle) * handRadius
+    );
+    ctx.stroke();
+    ctx.closePath();
+};
+const hands = () => {
+    let date = new Date,
+        hour = date.getHours();
+    hour = 12 < hour ? hour - 12 : hour;
+
+    needle(hour*5 + date.getMinutes()/60 * 5, true);
+    needle(date.getMinutes(), false);
+    needle(date.getSeconds(), false);
+    console.log(
+        'H:', hour,
+        'Min:', date.getMinutes(),
+        'Sec:', date.getSeconds(),
+    );
+
+};
+
+const clock = () => {
+    ctx.clearRect(0,0,cvs.width,cvs.height);
+    drawNumerals();
+    drawCenter();
+    hands();
+};
+
+loop = setInterval(clock, 1000);
     </script>
     
 </body>
