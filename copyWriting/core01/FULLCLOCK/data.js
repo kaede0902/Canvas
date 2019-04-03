@@ -13,17 +13,28 @@ const miniClock = {
     x: midX * 1.5,
     y: midY,
     r: midX/8,
-    numSize: 40,
-}
+    numSize: 19,
+};
+const leftClock = {
+    x: midX/4,
+    y: midY * 0.8,
+    r: midX/6,
+    numSize: 18,
+};
 
 
 let numArr = [1,2,3,4,5,6,7,8,9,10,11,12,];
-ctx.font = clock.numSize + 'px Arial';
+let romaNum = [
+    'I','II','III','IV','V','VI',
+    'VII','VIII','XI','X','XI','XII',
+];
+console.log(romaNum);
 
 const drawNum = (arr,obj) => {
     let angle = 0;
     let numWid = 0;
     let len = arr.length;
+    ctx.font = obj.numSize + 'px Arial';
 
     arr.forEach(num => {
         angle = Math.PI * 2 /len 
@@ -38,3 +49,5 @@ const drawNum = (arr,obj) => {
     })
 };
 drawNum(numArr,clock);
+drawNum(numArr,miniClock);
+drawNum(romaNum, leftClock);
