@@ -9,7 +9,7 @@
 
 ## Links
 
-[Github Pages](https://kaede0902.github.io/Canvas/)
+[Github Pages (WEBSITE)](https://kaede0902.github.io/Canvas/)
 
 [Github Codes](https://github.com/kaede0902/Canvas)
 

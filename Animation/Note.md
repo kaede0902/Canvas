@@ -3,14 +3,15 @@
 
 ## Task
 * loop, scale,rotate: Done!
+* Next, explain with moving animation.
 
 ## Mulipie Moves
 
 ### Moving
-* Add None Stop Colorful Carten
 
 ### Season
 * Make SunRaise and Sunset Anime => later
+* Halloween Ghost rebuild
 
 ## Transformation
     // x, y => 追加移動座標
