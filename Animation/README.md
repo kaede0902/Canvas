@@ -12,16 +12,16 @@
 
 ## Basic Animations
 ### Just A Ball Thrown...]
-[A Ball Thrown](BASIC/BallThrow.html)
-[With Friction](BASIC/frict.html)
-[Size Up!](BASIC/sizeUpper.html)
-[Spin!](BASIC/rectSpinner.html)
-[Random Balls](BASIC/rand.html)
+[A Ball Thrown](BASIC/BallThrow.html)  
+[With Friction](BASIC/frict.html)  
+[Size Up!](BASIC/sizeUpper.html)  
+[Spin!](BASIC/rectSpinner.html)  
+[Random Balls](BASIC/rand.html)  
 
 
 
 
 ## Direcotries
-[Plane Figure](PlaneFigure/)
-[Bezier](Bezier/)
-[SEASON](SEASON/)
+[Plane Figure](PlaneFigure/)  
+[Bezier](Bezier/)  
+[SEASON](SEASON/)  
