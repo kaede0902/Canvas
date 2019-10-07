@@ -26,5 +26,7 @@
     c.translate(x + 0.5 * w , y + 0.5 * h);
     // これで図形が拡大される。
 
-## Q
-* Canvasエリアの位置調整どうやるんだ？
+## Bezier
+context.quadraticCurveTo(cntrl_pnt_X, cntrl_pnt_Y, end_pnt_X, end_pnt_y);
+
+
