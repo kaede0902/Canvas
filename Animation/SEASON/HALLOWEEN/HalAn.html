@@ -2,112 +2,106 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>HalloWeen Ghost</title>
     <style>
+      html,
+      body,
       canvas {
         background: #000;
         width: 100%;
         height: 100%;
-      }
-
-      body {
         margin: 0;
+        padding: 0;
       }
     </style>
   </head>
 
   <body>
     <canvas></canvas>
-
-    <script>
-      // Background: glay by CSS
-      // This is Canvas Grid Line for drawing
-
-      // Lightgreen by every 500px line
-      // white line by 100px line
-      // glay by 50px.
-
-      let canvas = document.querySelector("canvas");
-      let cW = (canvas.width = window.innerWidth);
-      let cH = (canvas.height = window.innerHeight);
-      let c = canvas.getContext("2d");
-      let gX = cW * 0.4;
-      let gY = cH * 0.6;
-      let gXE = cW * 0.6;
-      let gYE = cH * 0.6;
-      let gPX = cW / 2;
-      let gPY = 0;
-      let gW = gXE - gX;
-      let gF = cH * 0.04;
-      let spd = 1.5;
-
-      function drawGhost() {
-        c.lineWidth = 20;
-        c.strokeStyle = "#fff";
-        c.lineJoin = "round";
-        c.lineCap = "round";
-        c.moveTo(gX, gY);
-        c.quadraticCurveTo(gPX, gPY, gXE, gYE);
-        c.stroke();
-        c.moveTo(gX, gY);
-        c.lineTo(gX + gW / 6, gY - gF);
-        c.lineTo(gX + (gW / 6) * 2, gY);
-        c.lineTo(gX + (gW / 6) * 3, gY - gF);
-        c.lineTo(gX + (gW / 6) * 4, gY);
-        c.lineTo(gX + (gW / 6) * 5, gY - gF);
-        c.lineTo(gXE, gYE);
-        c.stroke();
-      }
-
-      function drawEye() {
-        c.fillStyle = "#fff";
-        c.moveTo(rEyeX, EyeY);
-        c.arc(rEyeX, EyeY, gW * 0.02, 0, 9, false);
-        c.moveTo(lEyeX, EyeY);
-        c.arc(lEyeX, EyeY, gW * 0.02, 0, 10, false);
-        c.stroke();
-      }
-
-      let rEyeX = cW * 0.5 + gW / 8;
-      let EyeY = cH * 0.5 - gW / 4;
-      let lEyeX = cW * 0.5 - gW / 8;
-
-      function mover() {
-        gX += spd;
-        gY += spd;
-        gXE += spd;
-        gYE += spd;
-        gPX += spd;
-        gPY += spd;
-        rEyeX += spd;
-        lEyeX += spd;
-        EyeY += spd;
-        if (cH < gY * 0.8) {
-          spd *= -1;
-        } else if (gY < 0) {
-          spd *= -1;
-        }
-      }
-
-      function draw() {
-        c.clearRect(0, 0, cW, cH);
-        c.beginPath();
-        drawGhost();
-        drawEye();
-        mover();
-        drawMessage();
-        requestAnimationFrame(draw);
-      }
-
-      draw();
-
-      function drawMessage() {
-        c.beginPath();
-        c.fillStyle = "#fff";
-        c.textAlign = "center";
-        c.font = "75px serif";
-        c.fillText("🎃Happy Halloween!!!🎃", cW / 2, cH * 0.1);
-      }
-    </script>
   </body>
+
+  <script>
+    const canvas = document.querySelector("canvas");
+    const cW = (canvas.width = window.innerWidth);
+    const cH = (canvas.height = window.innerHeight);
+    const c = canvas.getContext("2d");
+    const pos = { x: cW / 2, y: cH / 2 };
+    const speed = { x: 1.5, y: 1.5 };
+
+    const drawGhost = () => {
+      c.lineWidth = 5;
+      c.strokeStyle = "#fff";
+      c.lineJoin = "round";
+      c.lineCap = "round";
+      c.save();
+      const WIDTH = 150;  // FIXME: to variable
+      const HEIGHT = 130; // FIXME: to variable
+      const aspect = Math.min(cW, cH) / 3 / WIDTH;
+      const dX = pos.x / aspect - WIDTH / 2;
+      const dY = pos.y / aspect + HEIGHT / 2;
+      const dMoveTo = (x, y) => c.moveTo(x + dX, y + dY);
+      const dLineTo = (x, y) => c.lineTo(x + dX, y + dY);
+      const dQuadraticCurveTo = (x1, y1, x2, y2) => c.quadraticCurveTo(x1 + dX, y1 + dY, x2 + dX, y2 + dY);
+      const dCircle = (x, y, r) => c.arc(x + dX, y + dY, r, 0, 2 * Math.PI);
+      c.scale(aspect, aspect);
+      // body
+      dMoveTo(0, 0);
+      dQuadraticCurveTo(80, -250, 150, 0);
+      dMoveTo(0, 0);
+      dLineTo(25, -25);
+      dLineTo(50, 0);
+      dLineTo(75, -25);
+      dLineTo(100, 0);
+      dLineTo(125, -25);
+      dLineTo(150, 0);
+      c.stroke();
+      // eyes
+      dMoveTo(60, -80);
+      dCircle(60, -80, 5);
+      dMoveTo(90, -80);
+      dCircle(90, -80, 5);
+      c.stroke();
+      c.restore();
+    };
+
+    const mover = () => {
+      pos.x += speed.x;
+      pos.y += speed.y;
+      if (0 > pos.x || pos.x > cW) {
+        speed.x *= -1;
+      }
+      if (0 > pos.y || pos.y > cH) {
+        speed.y *= -1;
+      }
+    }
+
+    const drawMessage = () => {
+      c.beginPath();
+      c.fillStyle = "#fff";
+      c.font = "75px serif";
+      const MESSAGE = "🎃Happy Halloween!!!🎃";
+      const aspect = cW / c.measureText(MESSAGE).width;
+      if (aspect < 1) {
+        c.save();
+        c.scale(aspect, aspect);
+        c.fillText(MESSAGE, 0, 75);
+        c.restore();
+      } else {
+        c.textAlign = "center";
+        c.fillText(MESSAGE, cW / 2, 75);
+      }
+    }
+
+    const draw = () => {
+      c.clearRect(0, 0, cW, cH);
+      c.beginPath();
+      drawMessage();
+      drawGhost();
+      mover();
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+  </script>
 </html>
