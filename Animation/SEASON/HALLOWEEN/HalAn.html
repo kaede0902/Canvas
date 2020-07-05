@@ -31,16 +31,6 @@
       let cW = (canvas.width = window.innerWidth);
       let cH = (canvas.height = window.innerHeight);
       let c = canvas.getContext("2d");
-
-      function CenterLine() {
-        c.lineWidth = 1;
-        c.moveTo(0, cH * 0.5);
-        c.lineTo(cW, cH * 0.5);
-        c.moveTo(cW * 0.5, 0);
-        c.lineTo(cW * 0.5, cH);
-        c.stroke();
-      }
-
       let gX = cW * 0.4;
       let gY = cH * 0.6;
       let gXE = cW * 0.6;
@@ -106,14 +96,6 @@
         drawEye();
         mover();
         drawMessage();
-        //CenterLine();
-        console.log("gX:" + gX);
-        console.log("gY:" + gY);
-        // console.log('gXE,  gYE:'+gXE,gYE);
-        // console.log('cW:  '+ cW);
-        // console.log('gW: '+ gW);
-        // console.log('gPY:'+ gPY);
-        console.log("rEyeX:" + rEyeX);
         requestAnimationFrame(draw);
       }
 
